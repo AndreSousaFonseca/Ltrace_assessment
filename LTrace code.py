@@ -176,9 +176,9 @@ for epoch in range(num_epochs):
         reconstruction_loss = loss_fn(data_reconstructed, data)
         kl_div = -torch.sum(1+ torch.log(logvar.pow(2)) - mu.pow(2) - logvar.pow(2))
         
-        # Backprop
         loss = reconstruction_loss + kl_div
         optimizer.zero_grad()
+        
         loss.backward()
         optimizer.step()
         
